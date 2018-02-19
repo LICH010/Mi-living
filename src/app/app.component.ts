@@ -12,7 +12,7 @@ export class AppComponent {
   private firstFormGroup: FormGroup;
   private secondFormGroup: FormGroup;
   private thirdFormGroup: FormGroup;
-  private doorParametrs: DoorParametrs = new DoorParametrs;
+  doorParametrs: DoorParametrs = new DoorParametrs;
   constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit() {
