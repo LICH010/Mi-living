@@ -1,9 +1,9 @@
-<mat-horizontal-stepper [linear]="true" #stepper="matHorizontalStepper">
-  <mat-step class="height">
+<mat-horizontal-stepper [linear]="true" #stepper="matHorizontalStepper" class="height ">
+  <mat-step class="height ">
     <form>
       <ng-template matStepLabel>Type and size</ng-template>
       <div class="container height">
-        <div class="row">
+        <div class="row center">
           <mat-button-toggle-group #type="matButtonToggleGroup">
             <mat-button-toggle value="Single Door">
               Single Door
@@ -119,40 +119,38 @@
       <div class="container height">
         <div class="row">
           <div class="col-2">
-            <span>Type</span>
+            <mat-card>Type</mat-card>
             <div>
               {{doorParametrs.Type}}
             </div>
           </div>
           <div class="col-2">
-            <span>Mechanism</span>
+            <mat-card>Mechanism</mat-card>
             <div>
               {{doorParametrs.Mechanism}}
             </div>
           </div>
           <div class="col-2">
-            <span>Pattern</span>
+            <mat-card>Pattern</mat-card>
             <div>
               {{doorParametrs.Pattern}}
             </div>
           </div>
           <div class="col-2">
-            <span>Handle</span>
+            <mat-card>Handle</mat-card>
             <div>
               {{doorParametrs.Handle}}
             </div>
           </div>
           <div class="col-2">
-            <span>Measures</span>
+            <mat-card>Measures</mat-card>
             <div>
               {{doorParametrs.Measures}}
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-12 align-self-end">
             Total: €1498,2
-          </div>
         </div>
         <div class="row">
           <button mat-raised-button matStepperPrevious class="indent">Back</button>
