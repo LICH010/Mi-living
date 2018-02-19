@@ -1,20 +1,165 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
+<mat-horizontal-stepper [linear]="true" #stepper="matHorizontalStepper">
+  <mat-step class="height">
+    <form>
+      <ng-template matStepLabel>Type and size</ng-template>
+      <div class="container height">
+        <div class="row">
+          <mat-button-toggle-group #type="matButtonToggleGroup">
+            <mat-button-toggle value="Single Door">
+              Single Door
+            </mat-button-toggle>
+            <mat-button-toggle value="Double Door">
+              Double Door
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+        <div class="row">
+          <mat-form-field>
+            <input matInput placeholder="Height of recess">
+            <mat-hint>
+              <strong>min 2100, max 2600</strong>
+            </mat-hint>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field>
+            <input matInput placeholder="With of recess">
+            <mat-hint>
+              <strong>min 800, max 950 (for single)</strong>
+            </mat-hint>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <span class="indent">Came around to measure(€100)</span>
+          <mat-slide-toggle class="example-margin" #measure>
+          </mat-slide-toggle>
+        </div>
+        <div class="row">
+          <button mat-raised-button matStepperNext>Next</button>
+        </div>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step class="height">
+    <form>
+      <ng-template matStepLabel>Opening Mechanism</ng-template>
+      <div class="container height">
+        <div class="row">
+          <mat-button-toggle-group #mechanism="matButtonToggleGroup">
+            <mat-button-toggle value="Door Closer" class="example-radio-button">
+              Door Closer
+            </mat-button-toggle>
+            <mat-button-toggle value="Hinges Left" class="example-radio-button">
+              Hinges Left
+            </mat-button-toggle>
+            <mat-button-toggle value="Hinges Right" class="example-radio-button">
+              Hinges Right
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+        <div class="row">
+          <button mat-raised-button matStepperPrevious class="indent">Back</button>
+          <button mat-raised-button matStepperNext>Next</button>
+        </div>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step class="height">
+    <ng-template matStepLabel>Pattern</ng-template>
+    <div class="container height">
+      <div class="row">
+        <mat-button-toggle-group #pattern="matButtonToggleGroup">
+          <mat-button-toggle value="Stockholm" class="example-radio-button">
+            Stockholm
+          </mat-button-toggle>
+          <mat-button-toggle value="Tokyo" class="example-radio-button">
+            Tokyo
+          </mat-button-toggle>
+          <mat-button-toggle value="Berlin" class="example-radio-button">
+            Berlin
+          </mat-button-toggle>
+          <mat-button-toggle value="Oxford" class="example-radio-button">
+            Oxford
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <div class="row">
+        <button mat-raised-button matStepperPrevious class="indent">Back</button>
+        <button mat-raised-button matStepperNext>Next</button>
+      </div>
+    </div>
+  </mat-step>
+  <mat-step class="height">
+    <form>
+      <ng-template matStepLabel>Handle</ng-template>
+      <div class="container height">
+        <div class="row">
+          <mat-button-toggle-group #handle="matButtonToggleGroup">
+            <mat-button-toggle value="Picasso" class="example-radio-button">
+              Picasso
+            </mat-button-toggle>
+            <mat-button-toggle value="Da Vinci" class="example-radio-button">
+              Da Vinci
+            </mat-button-toggle>
+            <mat-button-toggle value="Rubens" class="example-radio-button">
+              Rubens
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+        <div class="row">
+          <button mat-raised-button matStepperPrevious class="indent">Back</button>
+          <button mat-raised-button matStepperNext (click)=" saveParametrs(type.value, mechanism.value, pattern.value, handle.value,measure.checked)">Next</button>
+        </div>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step class="height">
+    <form>
+      <ng-template matStepLabel>Overview</ng-template>
+      <div class="container height">
+        <div class="row">
+          <div class="col-2">
+            <span>Type</span>
+            <div>
+              {{doorParametrs.Type}}
+            </div>
+          </div>
+          <div class="col-2">
+            <span>Mechanism</span>
+            <div>
+              {{doorParametrs.Mechanism}}
+            </div>
+          </div>
+          <div class="col-2">
+            <span>Pattern</span>
+            <div>
+              {{doorParametrs.Pattern}}
+            </div>
+          </div>
+          <div class="col-2">
+            <span>Handle</span>
+            <div>
+              {{doorParametrs.Handle}}
+            </div>
+          </div>
+          <div class="col-2">
+            <span>Measures</span>
+            <div>
+              {{doorParametrs.Measures}}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 align-self-end">
+            Total: €1498,2
+          </div>
+        </div>
+        <div class="row">
+          <button mat-raised-button matStepperPrevious class="indent">Back</button>
+          <button mat-raised-button (click)="stepper.reset()" class="indent">+ New Order</button>
+          <button mat-raised-button>Order and Print</button>
+        </div>
+      </div>
+    </form>
+  </mat-step>
+</mat-horizontal-stepper>
