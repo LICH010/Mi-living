@@ -3,5 +3,5 @@ export class DoorParametrs{
     Mechanism: string = "No value";
     Pattern: string = "No value";
     Handle: string = "No value";
-    Measures: string = "No value";
+    Measures: string = "No";
 }

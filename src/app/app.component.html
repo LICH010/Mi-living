@@ -1,10 +1,11 @@
+<h1>Mi-living</h1>
 <mat-horizontal-stepper [linear]="true" #stepper="matHorizontalStepper" class="height ">
-  <mat-step class="height ">
-    <form>
-      <ng-template matStepLabel>Type and size</ng-template>
+  <mat-step class="height" [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel >Type and size</ng-template>
       <div class="container height">
         <div class="row center">
-          <mat-button-toggle-group #type="matButtonToggleGroup">
+          <mat-button-toggle-group #type="matButtonToggleGroup"  (change)="updateType(type.value)" formControlName="firstCtrl" required>
             <mat-button-toggle value="Single Door">
               Single Door
             </mat-button-toggle>
@@ -15,7 +16,7 @@
         </div>
         <div class="row">
           <mat-form-field>
-            <input type="number" matInput placeholder="Height of recess">
+            <input type="number" matInput placeholder="Height of recess"formControlName="firstCtrl" required>
             <mat-hint>
               <strong>min 2100, max 2600</strong>
             </mat-hint>
@@ -23,7 +24,7 @@
         </div>
         <div class="row">
           <mat-form-field>
-            <input type="number" matInput placeholder="With of recess">
+            <input type="number" matInput placeholder="With of recess"formControlName="firstCtrl" required>
             <mat-hint>
               <strong>min 800, max 950 (for single)</strong>
             </mat-hint>
@@ -31,7 +32,7 @@
         </div>
         <div class="row">
           <span class="indent">Came around to measure(€100)</span>
-          <mat-slide-toggle class="example-margin" #measure>
+          <mat-slide-toggle class="example-margin" #measure (change)="updateMeasure(measure.checked)" formControlName="firstCtrl">
           </mat-slide-toggle>
         </div>
         <div class="row">
@@ -40,19 +41,19 @@
       </div>
     </form>
   </mat-step>
-  <mat-step class="height">
-    <form>
+  <mat-step class="height" [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Opening Mechanism</ng-template>
       <div class="container height">
         <div class="row">
-          <mat-button-toggle-group #mechanism="matButtonToggleGroup">
-            <mat-button-toggle value="Door Closer" class="example-radio-button">
+          <mat-button-toggle-group #mechanism="matButtonToggleGroup" (change)="updateMechanism(mechanism.value)" formControlName="firstCtrl" required>
+            <mat-button-toggle value="Door Closer" >
               Door Closer
             </mat-button-toggle>
-            <mat-button-toggle value="Hinges Left" class="example-radio-button">
+            <mat-button-toggle value="Hinges Left" >
               Hinges Left
             </mat-button-toggle>
-            <mat-button-toggle value="Hinges Right" class="example-radio-button">
+            <mat-button-toggle value="Hinges Right" >
               Hinges Right
             </mat-button-toggle>
           </mat-button-toggle-group>
@@ -64,11 +65,12 @@
       </div>
     </form>
   </mat-step>
-  <mat-step class="height">
+  <mat-step class="height" [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
     <ng-template matStepLabel>Pattern</ng-template>
     <div class="container height">
       <div class="row">
-        <mat-button-toggle-group #pattern="matButtonToggleGroup">
+        <mat-button-toggle-group #pattern="matButtonToggleGroup" (change)="updatePattern(pattern.value)" formControlName="firstCtrl" required>
           <mat-button-toggle value="Stockholm" class="example-radio-button">
             Stockholm
           </mat-button-toggle>
@@ -88,13 +90,14 @@
         <button mat-raised-button matStepperNext>Next</button>
       </div>
     </div>
+  </form>
   </mat-step>
-  <mat-step class="height">
-    <form>
+  <mat-step class="height" [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Handle</ng-template>
       <div class="container height">
         <div class="row">
-          <mat-button-toggle-group #handle="matButtonToggleGroup">
+          <mat-button-toggle-group #handle="matButtonToggleGroup" (change)="updateHandle(handle.value)" formControlName="firstCtrl" required>
             <mat-button-toggle value="Picasso" class="example-radio-button">
               Picasso
             </mat-button-toggle>
@@ -108,7 +111,7 @@
         </div>
         <div class="row">
           <button mat-raised-button matStepperPrevious class="indent">Back</button>
-          <button mat-raised-button matStepperNext (click)=" saveParametrs(type.value, mechanism.value, pattern.value, handle.value,measure.checked)">Next</button>
+          <button mat-raised-button matStepperNext >Next</button>
         </div>
       </div>
     </form>
@@ -154,7 +157,7 @@
         </div>
         <div class="row">
           <button mat-raised-button matStepperPrevious class="indent">Back</button>
-          <button mat-raised-button (click)="stepper.reset()" class="indent">+ New Order</button>
+          <button mat-raised-button (click)="clearStepper(stepper)" class="indent">+ New Order</button>
           <button mat-raised-button>Order and Print</button>
         </div>
       </div>
