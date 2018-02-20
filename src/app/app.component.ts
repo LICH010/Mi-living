@@ -10,9 +10,8 @@ import { DoorParametrs } from './doorParametrs';
 })
 export class AppComponent {
   private isLinear = false;
-  private firstFormGroup: FormGroup;
-  private secondFormGroup: FormGroup;
-  private thirdFormGroup: FormGroup;
+  firstFormGroup: FormGroup;
+
   private types:string;
   doorParametrs: DoorParametrs = new DoorParametrs;
   constructor(private _formBuilder: FormBuilder) { }
@@ -21,12 +20,6 @@ export class AppComponent {
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: [null, Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: [null, Validators.required]
-    });
-    this.thirdFormGroup = this._formBuilder.group({
-      thirdCtrl: [false, Validators.required]
     });
   }
 
